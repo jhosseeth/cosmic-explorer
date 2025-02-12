@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador Cósmico</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="logo.png" alt="Explorador Cósmico" id="logo" width="200">
+        </a>
+    </header>
+    <main>
+        <form id="cosmic-form" action="index.html" method="GET">
+            <label for="name">¿Cuál es tu nombre?</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="impact">¿Cómo describes tu impacto en los demás?</label>
+            <select id="impact" name="impact" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="leader">Guío a otros</option>
+                <option value="inspirational">Inspiro con mi energía</option>
+                <option value="connector">Ayudo a conectar personas</option>
+                <option value="creative">Genero nuevas ideas</option>
+            </select>
+            
+            <label for="environment">¿Qué tipo de entorno te motiva más?</label>
+            <select id="environment" name="environment" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="teamwork">Un equipo colaborativo</option>
+                <option value="challenge">Un reto personal</option>
+                <option value="creative_space">Un espacio donde pueda ser creativo</option>
+                <option value="stability">Un ambiente estable y predecible</option>
+            </select>
+            
+            <label for="change">¿Cómo manejas los cambios y la incertidumbre?</label>
+            <select id="change" name="change" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="adaptive">Me adapto rápido</option>
+                <option value="analytical">Analizo antes de actuar</option>
+                <option value="firm">Me mantengo firme y dejo que todo fluya</option>
+                <option value="embrace">Disfruto el cambio y lo busco</option>
+            </select>
+            
+            <label for="quality">Si tuvieras que elegir una cualidad principal, ¿cuál sería?</label>
+            <select id="quality" name="quality" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="resistance">Resistencia</option>
+                <option value="energy">Energía</option>
+                <option value="reflection">Reflexión</option>
+                <option value="innovation">Innovación</option>
+            </select>
+            
+            <label for="role">Cuando trabajas en equipo, ¿qué papel sueles asumir?</label>
+            <select id="role" name="role" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="organizer">Organizador</option>
+                <option value="motivator">Motivador</option>
+                <option value="support">Soporte clave</option>
+                <option value="creator">Creador de ideas</option>
+            </select>
+            
+            <button type="submit">Explorar</button>
+        </form>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
