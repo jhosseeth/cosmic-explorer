@@ -1,8 +1,12 @@
 import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.127.0/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js';
+import { EffectComposer } from 'https://unpkg.com/three@0.127.0/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'https://unpkg.com/three@0.127.0/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'https://unpkg.com/three@0.127.0/examples/jsm/postprocessing/UnrealBloomPass.js';
 
 let scene, camera, renderer, galaxy;
+let composer, bloomPass
 
 // Inicializa la escena
 function init() {
@@ -11,7 +15,7 @@ function init() {
     scene.background = new THREE.Color("black");
 
     // Cámara
-    const fov = 75;
+    const fov = 50;
     const aspect = window.innerWidth / window.innerHeight;
     const near = 0.01;
     const far = 1000;
@@ -35,13 +39,21 @@ function init() {
     controls.update(); // Permite movimientos de la cámara
     controls.target.set(0, 0, 0); // Establece el centro de la rotación en el origen
     controls.minDistance = 0.7;  // Distancia mínima permitida
-    controls.maxDistance = 2.5; // Distancia máxima permitida
+    controls.maxDistance = 3; // Distancia máxima permitida
+
+    composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+
+    const screenSize = new THREE.Vector2(window.innerWidth, window.innerHeight)
+    bloomPass = new UnrealBloomPass(screenSize, 1.5, 1.5, 0);
+    composer.addPass(bloomPass);
 
     animate();
 }
 
+
 let angle = 0; // Ángulo inicial
-const radius = 1; // Definir el radio de la órbita
+const radius = 2; // Definir el radio de la órbita
 
 // Animación de la galaxia
 function animate() {
@@ -53,9 +65,10 @@ function animate() {
 
     camera.lookAt(0, 0, 0); // Mirar siempre al centro
 
-    angle += 0.003; // Velocidad de rotación
+    angle += 0.002; // Velocidad de rotación
 
-    renderer.render(scene, camera);
+    // renderer.render(scene, camera);
+    composer.render();
 }
 
 // Manejo de redimensionamiento
