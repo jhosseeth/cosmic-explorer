@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Check if all required data is present
+    // Valido si todos los datos están completos
     const isDataComplete = data.name && 
         Object.values(data.traits).every(trait => trait !== null && trait !== "");
 
-    // Only show summary if we have complete data
+    // Solo muestro el resumen si tenemos datos completos
     if (isDataComplete) {
 
         // Mapa para determinar la entidades cósmica segun los rasgos
@@ -64,6 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
         summarySection.classList.remove("hidden");
     }
 
-    // Always hide loading screen and show content
+    // Siempre oculto la pantalla de carga y muestro el contenido
     document.getElementById("loading-screen").classList.add("hidden");
 });
