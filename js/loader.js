@@ -88,6 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (startButton) {
         startButton.addEventListener('click', () => {
             document.getElementById('loading-screen').classList.add('hide');
+            document.getElementById('title').classList.remove('hidden');
+            document.getElementById('msg').classList.remove('hidden');
+            document.getElementById('to-form').classList.remove('hidden');
+
+            // Reproduce el audio
             audio.loop = true;
             audio.volume = 0.5;
             audio.play().catch(error => console.error('Error al reproducir audio:', error));

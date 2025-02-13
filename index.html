@@ -23,19 +23,11 @@
         <canvas id="stars"></canvas>
     </div>
 
-    <main id="content" class="content">
-        <header>
-            <img src="./img/logo.png" alt="Explorador Cósmico" id="logo" width="200">
-        </header>
+    <h1 id="title" class="title hidden">Explorador de Personalidad Cósmica</h1>
+    <p id="msg" class="message hidden">Descubre qué entidad astronómica representa tu esencia.</p>
+    <button id="to-form" class="start hidden" onclick="location.href='formulario.html'">Comenzar</button>
 
-        <section id="welcome">
-            <h1>Bienvenido al Explorador de Personalidad Cósmica</h1>
-            <p>Descubre qué entidad astronómica representa tu esencia.</p>
-            <button class="glowbutton" onclick="location.href='formulario.html'">Comenzar</button>
-        </section>
-
-        <section id="summary" class="hidden"></section>
-    </main>
+    <section id="summary" class="hidden"></section>
 
     <script>
         // Obtengo los datos del formulario

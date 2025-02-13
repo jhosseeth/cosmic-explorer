@@ -9,17 +9,76 @@ body {
     /* font-family: "Orbitron", serif; */
     font-family: "Oxanium", serif;
     background-color: black;
-}
-
-#content {
-    position: absolute;
-    display: none;
-}
-
-h1 {
-    font-family: "Gemunu Libre";
+    overflow: hidden;
 }
 
 .hidden {
     display: none;
+}
+
+.title {
+    position: absolute;
+    top: 4vh;
+    margin: 0;
+    font-family: "Orbitron", serif;
+    font-size: 2rem;
+    opacity: 0;
+    animation: slideInLeft 8s ease-out 1s forwards;
+}
+
+.message {
+    position: absolute;
+    top: 10vh;
+    margin: 0;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: slideInRight 8s ease-out 3s forwards;
+}
+
+.start {
+    position: absolute;
+    top: 18vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    padding: 10px 20px;
+    opacity: 0;
+    animation: fadeIn 2s ease-out 11s forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(0);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(calc(50vw - 50%));
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100vw);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(calc(50vw - 50%));
+    }
 }
