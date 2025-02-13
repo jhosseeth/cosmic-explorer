@@ -8,6 +8,22 @@ import { UnrealBloomPass } from 'https://unpkg.com/three@0.127.0/examples/jsm/po
 let scene, camera, renderer, galaxy;
 let composer, bloomPass
 
+// Configuración del loader
+const loadingText = document.getElementById('loading-txt');
+const loadingManager = new THREE.LoadingManager();
+
+loadingManager.onStart = function (url, itemsLoaded, itemsTotal) {
+    loadingText.innerHTML = `Cargando... (0%)`;
+};
+loadingManager.onProgress = function (url, itemsLoaded, itemsTotal) {
+    let progress = Math.round((itemsLoaded / itemsTotal) * 100);
+    loadingText.innerHTML = `Cargando... (${progress}%)`;
+};
+loadingManager.onLoad = function () {
+    document.getElementById("loading-screen").style.visibility = "hidden"; // Oculta el loader
+};
+
+
 // Inicializa la escena
 function init() {
     // Escena
@@ -28,7 +44,7 @@ function init() {
     document.body.appendChild(renderer.domElement);
 
     // Cargar el modelo de la galaxia
-    const loader = new GLTFLoader();
+    const loader = new GLTFLoader(loadingManager);
     loader.load('./models/galaxy/scene.gltf', function (gltf) {
         galaxy = gltf.scene;
         galaxy.position.set(-1.4, -1.5, 1.4);
@@ -51,7 +67,6 @@ function init() {
     animate();
 }
 
-
 let angle = 0; // Ángulo inicial
 const radius = 2; // Definir el radio de la órbita
 
@@ -62,12 +77,9 @@ function animate() {
     // Movimiento circular en X-Z
     camera.position.x = radius * Math.cos(angle);
     camera.position.z = radius * Math.sin(angle);
-
     camera.lookAt(0, 0, 0); // Mirar siempre al centro
-
     angle += 0.002; // Velocidad de rotación
-
-    // renderer.render(scene, camera);
+    
     composer.render();
 }
 

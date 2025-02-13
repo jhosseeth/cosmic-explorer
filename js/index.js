@@ -65,5 +65,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Siempre oculto la pantalla de carga y muestro el contenido
-    document.getElementById("loading-screen").classList.add("hidden");
+    //document.getElementById("loading-screen").classList.add("hidden");
 });

@@ -8,10 +8,12 @@ body {
     color: #fff;
     /* font-family: "Orbitron", serif; */
     font-family: "Oxanium", serif;
+    background-color: black;
 }
 
 #content {
-    position: absolute
+    position: absolute;
+    display: none;
 }
 
 h1 {
