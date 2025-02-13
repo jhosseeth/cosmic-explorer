@@ -26,7 +26,7 @@
 .loader-content {
     position: relative;
     z-index: 10;
-    top: 45vh;
+    top: 43vh;
 }
 
 .loader .glowbutton {

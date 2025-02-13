@@ -81,8 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     animateStars();
 
-    const audio = new Audio();
-    audio.src = (isDataComplete) ? './sounds/message.mp3' : './sounds/main.mp3';
+    window.audio = new Audio();
+    window.audio.src = (isDataComplete) ? './sounds/message.mp3' : './sounds/main.mp3';
 
     const startButton = document.getElementById('start-btn');
     if (startButton) {
@@ -93,9 +93,9 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('to-form').classList.remove('hidden');
 
             // Reproduce el audio
-            audio.loop = true;
-            audio.volume = 0.5;
-            audio.play().catch(error => console.error('Error al reproducir audio:', error));
+            window.audio.loop = true;
+            window.audio.volume = 0.5;
+            window.audio.play().catch(error => console.error('Error al reproducir audio:', error));
             
             // Detiene la animación del fondo estelar
             setTimeout(() => {

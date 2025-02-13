@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-family: "Oxanium", serif;
+    background-color: black;
+    overflow: hidden;
+}
+
+.back-button {
+    margin: 25px;
+    padding: 10px 20px;
+    font-family: "Oxanium", serif;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+main {
+    display: flex;
+}
+
+.form-group {
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(33, 33, 33, 0.8);
+    color: #fff;
+    font-family: "Oxanium", serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #40c9ff;
+    box-shadow: 0 0 10px rgba(64, 201, 255, 0.3);
+}
+
+.form-group select option {
+    background: #212121;
+    color: #fff;
+}
+
+#cosmic-form button[type="submit"] {
+    margin-top: 1rem;
+    padding: 12px 24px;
+    background: linear-gradient(145deg, #e81cff, #40c9ff);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: "Oxanium", serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#cosmic-form button[type="submit"]:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(64, 201, 255, 0.5);
+}
+
+/* From Uiverse.io by omriluz */ 
+.form-container {
+    width: 600px;
+    margin: auto;
+    background: linear-gradient(#212121, #212121) padding-box,
+                linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
+    border: 2px solid transparent;
+    padding: 32px 24px;
+    font-size: 14px;
+    font-family: inherit;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background-size: 200% 100%;
+    animation: gradient 5s ease infinite;
+}
+  
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+  
+    50% {
+        background-position: 100% 50%;
+    }
+  
+    100% {
+        background-position: 0% 50%;
+    }
+}
+  
+  

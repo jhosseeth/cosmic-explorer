@@ -1,9 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
     const isDataComplete = JSON.parse(localStorage.getItem('isDataComplete'));
-    const data = JSON.parse(localStorage.getItem('data'));
+
+    const startButton = document.getElementById('to-form');
+    if (startButton) {
+        startButton.addEventListener('click', () => {
+            console.log('Clicked to form');
+        
+            // Fade out audio if it exists
+            if (window.audio) {
+                const fadeAudio = setInterval(() => {
+                    if (window.audio.volume > 0.1) {
+                        window.audio.volume -= 0.1;
+                    } else {
+                        window.audio.volume = 0;
+                        clearInterval(fadeAudio);
+                    }
+                }, 200);
+            }
+
+            // Add fade out effect to body
+            document.body.style.transition = 'opacity 2s';
+            document.body.style.opacity = 0;
+
+            // Navigate after transition
+            setTimeout(() => {
+                window.location.href = 'formulario.html';
+            }, 2000);
+        });
+    }
 
     // Solo muestro el resumen si tenemos datos completos
     if (isDataComplete) {
+
+        const data = JSON.parse(localStorage.getItem('data'));
 
         // Mapa para determinar la entidades cósmica segun los rasgos
         const cosmicEntity = {

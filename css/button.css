@@ -2,10 +2,10 @@
 
 /* From Uiverse.io by InfinityLoopGames */ 
 .glowbutton {
-    --glow-color: rgb(226, 176, 255);
-    --glow-spread-color: rgba(204, 123, 255, 0.781);
-    --enhanced-glow-color: #f0ceff;
-    --btn-color: #6b3d88;
+    --glow-color: rgb(204, 161, 250);
+    --glow-spread-color: rgba(179, 108, 250, 0.781);
+    --enhanced-glow-color: #e0c4fb;
+    --btn-color: #603685;
     border: 0.25em solid var(--glow-color);
     padding: 0.7em 2em;
     color: var(--glow-color);

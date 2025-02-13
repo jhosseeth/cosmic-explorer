@@ -13,7 +13,7 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .title {
@@ -36,8 +36,8 @@ body {
 }
 
 .start {
-    position: absolute;
-    top: 18vh;
+    position: absolute !important;
+    top: 20vh;
     left: 50%;
     transform: translateX(-50%);
     font-size: 1rem;
@@ -81,4 +81,11 @@ body {
         opacity: 1;
         transform: translateX(calc(50vw - 50%));
     }
+}
+
+footer {
+    position: absolute;
+    bottom: 1vh;
+    left: 50%;
+    transform: translateX(-50%);
 }
