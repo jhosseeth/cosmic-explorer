@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
         startButton.addEventListener('click', () => {
             console.log('Clicked to form');
         
-            // Fade out audio if it exists
+            // Desvanezco el audio
             if (window.audio) {
                 const fadeAudio = setInterval(() => {
                     if (window.audio.volume > 0.1) {
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, 200);
             }
 
-            // Add fade out effect to body
+            // Desvanezco la UI
             document.body.style.transition = 'opacity 2s';
             document.body.style.opacity = 0;
 
@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Solo muestro el resumen si tenemos datos completos
     if (isDataComplete) {
-
         const data = JSON.parse(localStorage.getItem('data'));
 
         // Mapa para determinar la entidades cósmica segun los rasgos
@@ -73,9 +72,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const summarySection = document.getElementById("summary");
         summarySection.innerHTML = `
-            <h2>En hora buena ${data.name}!</h2>
-            <h3>${cosmicMessages[bestMatch]}</h3>
+            <div class="cosmic-result">
+                <h2>¡En hora buena ${data.name}!</h2>
+                <h3>${cosmicMessages[bestMatch]}</h3>
+                <button class="back-home" onclick="window.location.href='index.html'">Volver al Inicio</button>
+            </div>
         `;
-        summarySection.classList.remove("hidden");
     }
 });

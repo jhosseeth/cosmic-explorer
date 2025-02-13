@@ -27,7 +27,7 @@
     <p id="msg" class="message hidden">Descubre qué entidad astronómica representa tu esencia.</p>
     <button id="to-form" class="start glowbutton hidden">Comenzar</button>
 
-    <section id="summary" class="hidden"></section>
+    <section id="summary" class="summary hidden"></section>
 
     <footer>Crafted by Jhoss Naranjo <span style="font-family: Arial, Helvetica, sans-serif;">©</span></footer>
 
@@ -50,7 +50,7 @@
             Object.values(data.traits).every(trait => Boolean(trait));
 
         // Guardo los datos en el localStorage
-        localStorage.setItem('data', data);
+        localStorage.setItem('data', JSON.stringify(data));
         localStorage.setItem('isDataComplete', isDataComplete);
     </script>
     <script src="./js/loader.js"></script>

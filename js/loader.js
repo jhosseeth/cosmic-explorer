@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const isDataComplete = JSON.parse(localStorage.getItem('isDataComplete')); // Obtener datos guardados
 
-    // 🚀 CONFIGURACIÓN DEL CANVAS PARA EL EFECTO HIPERESPACIAL
+    // Efecto de viaje por las estrellas
     const canvas = document.getElementById("stars");
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const stars = [];
     const numStars = 350;
-    const speedMultiplier = 14; // 🚀 Velocidad ajustada
-    const minDistanceFromCenter = 150; // ✨ Evita saturación en el centro
+    const speedMultiplier = 14; // Velocidad ajustada
+    const minDistanceFromCenter = 150; // Evita saturación en el centro
 
-    // 🎨 Colores sutiles con más azuladas, pero casi blancas
+    // Colores sutiles con más azuladas, pero casi blancas
     const colors = [
         "rgba(255, 252, 250, 0.9)",  // Blanco cálido
         "rgba(255, 255, 255, 0.9)",  // Blanco puro
@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
         
         ctx.translate(canvas.width / 2, canvas.height / 2);
         for (let star of stars) {
-            let speedFactor = star.z / canvas.width; // 📌 Factor para dar profundidad
-            let speed = star.baseSpeed * (1 - speedFactor); // 🔹 Más lento en la periferia
+            let speedFactor = star.z / canvas.width; // Factor para dar profundidad
+            let speed = star.baseSpeed * (1 - speedFactor); // Más lento en la periferia
 
             star.z -= speed;
             if (star.z <= 0) {
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let sx = (star.x / star.z) * canvas.width;
             let sy = (star.y / star.z) * canvas.height;
-            let size = Math.max((1 - star.z / canvas.width) * 2, 0.2); // 🔻 Tamaño más reducido
+            let size = Math.max((1 - star.z / canvas.width) * 2, 0.2); // Tamaño más reducido
 
             ctx.fillStyle = star.color;
             ctx.beginPath();
@@ -88,10 +88,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (startButton) {
         startButton.addEventListener('click', () => {
             document.getElementById('loading-screen').classList.add('hide');
-            document.getElementById('title').classList.remove('hidden');
-            document.getElementById('msg').classList.remove('hidden');
-            document.getElementById('to-form').classList.remove('hidden');
 
+            if (!isDataComplete) {
+                document.getElementById('title').classList.remove('hidden');
+                document.getElementById('msg').classList.remove('hidden');
+                document.getElementById('to-form').classList.remove('hidden');
+            } else {
+                document.getElementById("summary").classList.remove("hidden");
+            }
+            
             // Reproduce el audio
             window.audio.loop = true;
             window.audio.volume = 0.5;
