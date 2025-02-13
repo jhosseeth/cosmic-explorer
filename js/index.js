@@ -1,20 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Obtengo los datos del formulario
-    const params = new URLSearchParams(window.location.search);
-    const data = {
-        name: params.get("name"),
-        traits: {
-            impact: params.get("impact"),
-            environment: params.get("environment"),
-            change: params.get("change"),
-            quality: params.get("quality"),
-            role: params.get("role")
-        }
-    }
-
-    // Valido si todos los datos están completos
-    const isDataComplete = data.name && 
-        Object.values(data.traits).every(trait => trait !== null && trait !== "");
+    const isDataComplete = JSON.parse(localStorage.getItem('isDataComplete'));
+    const data = JSON.parse(localStorage.getItem('data'));
 
     // Solo muestro el resumen si tenemos datos completos
     if (isDataComplete) {
@@ -63,7 +49,4 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         summarySection.classList.remove("hidden");
     }
-
-    // Siempre oculto la pantalla de carga y muestro el contenido
-    //document.getElementById("loading-screen").classList.add("hidden");
 });

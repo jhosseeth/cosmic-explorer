@@ -5,24 +5,47 @@ import { EffectComposer } from 'https://unpkg.com/three@0.127.0/examples/jsm/pos
 import { RenderPass } from 'https://unpkg.com/three@0.127.0/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'https://unpkg.com/three@0.127.0/examples/jsm/postprocessing/UnrealBloomPass.js';
 
-let scene, camera, renderer, galaxy;
-let composer, bloomPass
 
 // Configuración del loader
+let progress = 0;
+let targetProgress = 0;
+const updateSpeed = 20; // Milisegundos entre actualizaciones
 const loadingText = document.getElementById('loading-txt');
+
+// Función para animar la carga progresivamente
+function animateLoader() {
+    const interval = setInterval(() => {
+        if (progress < targetProgress) {
+            progress++;
+            loadingText.innerHTML = `Cargando... (${progress}%)`;
+        } else {
+            clearInterval(interval);
+            if (progress === 100) {
+                // Esperar 0.5 segundos antes de mostrar el boton para empezar
+                setTimeout(() => {
+                    document.getElementById("start-experience").classList.remove('hidden');
+                }, 500);
+            }
+        }
+    }, updateSpeed);
+}
+
 const loadingManager = new THREE.LoadingManager();
 
-loadingManager.onStart = function (url, itemsLoaded, itemsTotal) {
-    loadingText.innerHTML = `Cargando... (0%)`;
+loadingManager.onStart = function () {
+    progress = 0;
+    targetProgress = 0;
+    animateLoader();
 };
 loadingManager.onProgress = function (url, itemsLoaded, itemsTotal) {
-    let progress = Math.round((itemsLoaded / itemsTotal) * 100);
-    loadingText.innerHTML = `Cargando... (${progress}%)`;
+    targetProgress = Math.round((itemsLoaded / itemsTotal) * 100);
 };
 loadingManager.onLoad = function () {
-    document.getElementById("loading-screen").style.visibility = "hidden"; // Oculta el loader
+    targetProgress = 100;
 };
 
+let scene, camera, renderer, galaxy;
+let composer, bloomPass
 
 // Inicializa la escena
 function init() {
@@ -79,7 +102,7 @@ function animate() {
     camera.position.z = radius * Math.sin(angle);
     camera.lookAt(0, 0, 0); // Mirar siempre al centro
     angle += 0.002; // Velocidad de rotación
-    
+
     composer.render();
 }
 

@@ -24,6 +24,7 @@
     transition: all 0.3s;
     font-family: "Orbitron", serif;
     cursor: pointer;
+    display: block;
   }
   
   .glowbutton::after {

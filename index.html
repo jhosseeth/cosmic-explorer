@@ -13,30 +13,14 @@
 </head>
 <body>
     <div id="loading-screen" class="loader" aria-live="polite">
-        <div class="wave">
-            <div class="item" style="--i:0;"></div>
-            <div class="item" style="--i:1;"></div>
-            <div class="item" style="--i:2;"></div>
-            <div class="item" style="--i:3;"></div>
-            <div class="item" style="--i:4;"></div>
-            <div class="item" style="--i:5;"></div>
-            <div class="item" style="--i:6;"></div>
-            <div class="item" style="--i:7;"></div>
-            <div class="item" style="--i:8;"></div>
-            <div class="item" style="--i:9;"></div>
-            <div class="item" style="--i:10;"></div>
-            <div class="item" style="--i:11;"></div>
-            <div class="item" style="--i:12;"></div>
-            <div class="item" style="--i:13;"></div>
-            <div class="item" style="--i:14;"></div>
-            <div class="item" style="--i:15;"></div>
-            <div class="item" style="--i:16;"></div>
-            <div class="item" style="--i:17;"></div>
-            <div class="item" style="--i:18;"></div>
-            <div class="item" style="--i:19;"></div>
-            <div class="item" style="--i:20;"></div>
+        <div class="loader-content">
+            <h2 id="loading-txt">Cargando...</h2>
+            <div id="start-experience" class="hidden">
+                <p>Para una mejor experiencia usa audifonos!</p>
+                <button id="start-btn" class="glowbutton">Entendido</button>
+            </div>
         </div>
-        <h3 id="loading-txt">Cargando...</h3>
+        <canvas id="stars"></canvas>
     </div>
 
     <main id="content" class="content">
@@ -53,6 +37,29 @@
         <section id="summary" class="hidden"></section>
     </main>
 
+    <script>
+        // Obtengo los datos del formulario
+        const params = new URLSearchParams(window.location.search);
+        const data = {
+            name: params.get("name"),
+            traits: {
+                impact: params.get("impact"),
+                environment: params.get("environment"),
+                change: params.get("change"),
+                quality: params.get("quality"),
+                role: params.get("role")
+            }
+        }
+
+        // Valido si todos los datos están completos
+        const isDataComplete = Boolean(data.name) && 
+            Object.values(data.traits).every(trait => Boolean(trait));
+
+        // Guardo los datos en el localStorage
+        localStorage.setItem('data', data);
+        localStorage.setItem('isDataComplete', isDataComplete);
+    </script>
+    <script src="./js/loader.js"></script>
     <script src="./js/index.js"></script>
     <script type="module" src="./js/main.js"></script>
 </body>
